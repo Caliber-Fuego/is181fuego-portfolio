@@ -299,12 +299,18 @@ body {
 }
 
 .nav-content li {
-    list-style: circle;
+    list-style: none;
+    text-align: center;
+    margin: 10px;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+.nav-content li :hover {
+    color: rgba(202, 159, 159, 0.945)
 }
 
 /* Main Content Right */
