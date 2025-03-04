@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bouncing-background">
+        <div class="scrolling-image"></div>
+        <div class="scrolling-image"></div>
+        <div class="scrolling-image"></div>
+    </div>
+
+    <header>
+        <div class="top-wrapper">
+            <div class="preview-container preview-left">
+                <img id="prev-preview" src="" alt="Previous Image">
+            </div>
+            <button id="prev-btn"> &lt; </button>
+            <div id="top">
+                <div class="header">
+                    <div class="image-container">
+                        <img src="assets/images/projects/project1.png" alt="Portfolio Image">
+                    </div>
+                </div>
+            </div>
+            <button id="next-btn">&gt;</button>
+            <div class="preview-container preview-right">
+                <img id="next-preview" src="" alt="Next Image">
+            </div>
+        </div>
+        <div></div>
+    </header>
+    <main>
+        <div class="main-wrapper">
+            <div class="left-nav">
+                <p style="font-weight: 700;">- Navigation -</p>
+                <div class="nav-content">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="certificates.html">Certificates</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </div>
+                <div style=" margin-top: 77px;">
+                    <img style="width: auto; height: 322px;" src="assets/images/misc/zako2.png">
+                </div>
+            </div>
+            <div class="main-content-others">
+                <div id="projects-container"></div>
+            </div>
+
+        </div>
+    </main>
+    <footer class="footer-wrapper">
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/PointCaliber" target="_blank" class="social-icon">
+                    <img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-1024.png" alt="Facebook">
+                </a>
+                <a href="https://github.com/Caliber-Fuego" target="_blank" class="social-icon">
+                    <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-1024.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/louis-fuego-8a0806251/" target="_blank" class="social-icon">
+                    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-1024.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- OVERLAY -->
+    <div id="overlay">
+        <div class="overlaycontent">
+            <div id="overlaytext" class="overlayedtext">
+                <div class="text-content">
+                    <p id="projectName">Project Title</p>
+                    <p id="projectLocation" class="subtitle">Project Location</p>
+                </div>
+            </div>
+            <div onclick="off()" id="overlayimg">
+                <img id="imgoverlay" class="row-contents-img">
+            </div>
+            <div id="overlaytext" class="overlayedtextdesc">
+                <div class="text-content">
+                    <p id="projectDesc">Project Desc</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,480 @@
+body {
+    background: rgb(254, 205, 223);
+    overflow-x: hidden;
+}
+
+/* Background container */
+.bouncing-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none;
+    display: flex;
+    align-items: center; 
+    overflow: hidden;
+}
+
+    /* Scrolling Image */
+.scrolling-image {
+    width: 220px;
+    height: 220px;
+    background-image: url('zako.png');
+    background-size: cover;
+    position: absolute;
+    animation: scrollLeftRight 10s linear infinite;
+}
+
+    /* Keyframes for horizontal scrolling */
+@keyframes scrollLeftRight {
+    0% {
+        left: -420px;
+    }
+    50% {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    100% {
+        left: 100%; 
+    }
+}
+
+    /* Duplicate images with different delays */
+.scrolling-image:nth-child(2) {
+    animation-delay: -3.33s;
+}
+.scrolling-image:nth-child(3) {
+    animation-delay: -6.66s;
+}
+
+/* Top Section */
+.top-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+
+.header {
+    height: 251px;
+    width: 800px;
+    display: flex;
+    text-align: right;
+    border-radius: 3px;
+    align-items: center;
+    overflow: hidden;
+    padding: 0px;
+    position: relative;
+    transition: transform 0.2s ease-in-out
+}
+
+.header:hover {
+    overflow: visible;
+    transform: scale(1.03);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition for opacity and transform */
+}
+
+.top-wrapper:hover .portfolio-name-bg {
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease; /* Smooth transition for opacity and transform */
+
+}
+
+.header:hover img {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 3px;
+}
+
+.portfolio-name-bg {
+    height: 100%;
+    width: 50%;
+    padding-left: 20px;
+    max-width: 50%;
+    text-align:center;
+    position: absolute;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.portfolio-name {
+    height: 100%;
+    width: 100%;
+    font-size: 108px;
+    border-radius: 3px;
+    background-color: rgb(255, 240, 250);
+}
+
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden; /* Ensure images don't overflow during transition */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+}
+
+    /* Transition effect for image changes */
+.image-fade-out {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.image-fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Navigation buttons */
+#prev-btn, #next-btn {
+    width: 40px;
+    height: 251px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    color: rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+#prev-btn {
+    background: linear-gradient(to right, rgba(203, 203, 203, 0.8), rgba(203, 203, 203, 0));
+    border-radius: 10px 0 0 10px;
+    margin-right: 10px;
+}
+
+#prev-btn:hover {
+    background: linear-gradient(to right, rgba(156, 156, 156, 0.8), rgba(203, 203, 203, 0));
+}
+
+#next-btn {
+    background: linear-gradient(to left, rgba(203, 203, 203, 0.8), rgba(203, 203, 203, 0));
+    border-radius: 0 10px 10px 0;
+    margin-left: 10px;
+}
+
+#next-btn:hover {
+    background: linear-gradient(to left, rgba(156, 156, 156, 0.8), rgba(203, 203, 203, 0));
+}
+
+    /* Show buttons on hover */
+.top-wrapper:hover #prev-btn,
+.top-wrapper:hover #next-btn {
+    opacity: 1;
+}
+
+#top {
+    display: flex;
+    justify-content: center;
+}
+
+/* Preview images styling */
+.preview-container {
+    position: relative;
+    width: 100px;
+    height: 251px;
+    overflow: hidden;
+    display: none;
+    opacity: 0.5; 
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for previews */
+}
+
+.preview-left {
+    margin-right: 10px;
+    transform: translateX(-20px);
+}
+
+.preview-right {
+    margin-left: 10px;
+    transform: translateX(20px);
+}
+
+.preview-container img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    transition: opacity 0.5s ease; 
+}
+
+/* Show preview images on hover with animations */
+.top-wrapper:hover .preview-container {
+    display: block;
+    animation: fadeIn 0.3s forwards;
+}
+
+.top-wrapper:hover .preview-left {
+    transform: translateX(0);
+}
+
+.top-wrapper:hover .preview-right {
+    transform: translateX(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.5; }
+}
+
+.preview-left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+                rgba(254, 205, 223, 0.9),
+                rgba(254, 205, 223, 0.7) 30%,
+                rgba(254, 205, 223, 0.5) 60%, 
+                rgba(254, 205, 223, 0.2) 80%,
+                rgba(254, 205, 223, 0) 100%);
+    pointer-events: none;
+}
+
+.preview-right::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, 
+                rgba(254, 205, 223, 0.9),
+                rgba(254, 205, 223, 0.7) 30%,
+                rgba(254, 205, 223, 0.5) 60%, 
+                rgba(254, 205, 223, 0.2) 80%,
+                rgba(254, 205, 223, 0) 100%);
+    pointer-events: none;
+}
+
+
+/* Main Content */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Main Content Left */
+.left-nav {
+    margin-top: 3px;
+    margin-right: 13px;
+	height: 670px;
+	width: 216px;
+	text-align: center;
+	padding: 0px;
+	border-radius: 3px;
+	background-color: rgb(255, 240, 250);
+    overflow: visible;
+    align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+}
+
+.nav-content {
+    height: 180px;
+    padding-top: 40px;
+	font-size: 15pt;
+	display: inline-block;
+    text-align: left;
+	color: #16222A ;
+    border-bottom: 2px solid #6a7468;
+}
+
+.nav-content li {
+    list-style: circle;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Main Content Right */
+.main-content {
+    margin-top: 3px;
+	margin-left: -9px;
+	height: 670px;
+	width: 580px;
+	padding: 20px;
+	text-align: center;
+	border-radius: 3px;
+	background-color: rgb(255, 240, 250);
+	box-sizing: border-box;
+    align-items: center;
+    overflow: visible;
+    position: relative;
+	justify-content: center;
+}
+
+.main-content-others {
+    margin-top: 3px;
+	margin-left: -9px;
+    height: 670px;
+    width: 580px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: rgb(255, 240, 250);
+    box-sizing: border-box;
+    overflow: auto; /* Better than scroll+hidden combo */
+    position: relative;
+}
+
+.row-contents-img {
+    cursor: pointer;    
+}
+
+/* Mascot */
+.image-overflow-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 49.5%;
+    margin-right: 0px; /* Negative margin to extend beyond the container */
+    overflow: visible;
+  }
+  
+  .image-overflow {
+    width: 120px;
+    height: auto;
+    position: relative;
+    border-radius: 40px;
+    z-index: 10; /* Ensure it appears above other elements */
+  }
+
+
+
+  /* Overlay */
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.915);
+    z-index: 5;
+}
+
+.overlaycontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 59px;
+}
+
+.overlayedtext {
+    position: relative;
+    bottom: 47.2%;
+    right: 5px;
+    text-align: right;
+    width: 300px;
+    height: 47.2px;
+}
+
+.overlayedtextdesc{
+    position: relative;
+    bottom: 47.2%;
+    right: -5px;
+    text-align: left;
+    width: 300px;
+    height: 47.2px;
+}
+
+#projectDesc{
+    font-size: 25px;
+    color:rgb(220, 220, 220)
+
+}
+
+.text-content {
+    font-size: 40px;
+    margin-right: 10px;
+    color: white;
+}
+
+.text-content p{
+    margin: 0;
+}
+
+.subtitle{
+    font-size: 25px;
+    color:rgba(255, 255, 255, 0.581)
+}
+
+#overlayimg {
+    position: relative;
+    max-width: 60%;
+    width: 912px;
+    height: 100%;
+    right: 10px;
+    cursor: pointer;
+}
+
+#imgoverlay {
+    width: 100%;
+    height: auto;
+}
+
+/* Footer */
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.footer-content {
+    width: 800px; 
+    height: 100px;
+    background-color: rgb(255, 240, 250);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    font-size: 12px;
+    color: #6a7468;
+}

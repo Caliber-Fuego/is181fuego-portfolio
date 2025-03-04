@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "image": "assets/images/projects/project1.png",
+        "languages": "C#",
+        "name": "JL Katma Fingerprint App",
+        "description": "The first half of the fingerprint attendance system, made with C# and WPS for the UI. This app handles all the registration and verification side of the attendance system"
+    },
+    {
+        "id": 2,
+        "image": "assets/images/projects/project2.png",
+        "languages": "Python, Typescript",
+        "name": "JL Katma Fingerprint Attendance System",
+        "description": "The second half of the fingerprint attendance system, made with Django for the backend and React-Vite for the Frontend. this webapp handles the management side of the system wherein you can manage sessions, student info and etc."
+    },
+    {
+        "id": 3,
+        "image": "assets/images/projects/project3.png",
+        "languages": "Python, Typescript",
+        "name": "BERT-Based Gmail Phishing Detector Extension",
+        "description": "A BERT-Based Phishing Detector Extension that reads an email from GMail and checks if it's phishing or not."
+    },
+    {
+        "id": 4,
+        "image": "assets/images/projects/project4.png",
+        "languages": "C#",
+        "name": "POS System",
+        "description": "A basic POS System made with Avalonia for the UI that also handles sales reports."
+    },
+    {
+        "id": 5,
+        "image": "assets/images/projects/project5.png",
+        "languages": "C#",
+        "name": "Dyna Soar",
+        "description": "An extremely basic game made with Godot where the premise is similar to Chrome's Dinosaur Game where you can attack the obstacles coming for you."
+    }
+]
